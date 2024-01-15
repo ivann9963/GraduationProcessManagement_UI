@@ -3,8 +3,9 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
-import { PermissionsService } from './auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './services/auth.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideNoopAnimations(), PermissionsService]
+  providers: [provideRouter(routes), provideNoopAnimations(), AuthGuard, AuthService]
 };

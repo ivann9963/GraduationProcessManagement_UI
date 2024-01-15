@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-title>Upload thesis</mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <mat-form-field appearance="fill">
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title" placeholder="Enter your title">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>objective</mat-label>
+                <input matInput formControlName="objective" placeholder="Enter your objective">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>tasks</mat-label>
+                <input matInput formControlName="tasks" placeholder="Enter your tasks">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>technologies</mat-label>
+                <input matInput formControlName="technologies" placeholder="Enter your technologies">
+            </mat-form-field>
+            <p *ngIf="error" style="color:#ff0033">{{error}}</p>
+            <button mat-raised-button (click)="createThesis()" color="primary">Create</button>
+        </form>
+    </mat-card-content>
+</mat-card>

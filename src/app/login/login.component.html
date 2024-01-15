@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>Login</mat-card-title>
-    <p *ngIf="error">{{error}}</p>
+
     <mat-card-content>
         <form [formGroup]="formGroup">
             <mat-form-field appearance="fill">
@@ -12,7 +12,7 @@
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password" placeholder="Enter your password">
             </mat-form-field>
-
+            <p *ngIf="error" style="color:#ff0033">{{error}}</p>
             <button mat-raised-button (click)="userExists()" color="primary">Login</button>
         </form>
     </mat-card-content>

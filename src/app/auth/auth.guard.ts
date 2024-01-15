@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 
 @Injectable()
-export class PermissionsService {
+export class AuthGuard {
 
   constructor(
     private router: Router
@@ -22,5 +21,5 @@ export class PermissionsService {
 }
 
 export const authGuard: CanActivateFn = (_route, _state) => {
-  return inject(PermissionsService).canActivate();
+  return inject(AuthGuard).canActivate();
 };

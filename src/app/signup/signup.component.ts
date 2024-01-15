@@ -6,11 +6,14 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, HttpClientModule, MatOptionModule, MatSelectModule],
   providers: [UserService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
@@ -18,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class SignupComponent implements OnInit {
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -29,10 +32,10 @@ export class SignupComponent implements OnInit {
   }
 
   createUser() {
-    const { name, password } = this.formGroup.value;
-    const body = { username: name, password, role: 'student' }; //TODO dynamic role
+    const { name, password, role } = this.formGroup.value;
+    const body = { username: name, password, role }; 
     this.userService.createUser(body).subscribe((res: any) => {
-      sessionStorage.setItem('token', JSON.stringify(res));
+      this.authService.storeUser(res);
       this.router.navigate(['home']);
     })
   }
@@ -41,7 +44,8 @@ export class SignupComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.min(5), Validators.max(42)]],
       password: ['', [Validators.required, Validators.min(5), Validators.max(42)]],
-      repPass: ['', [Validators.required, Validators.min(5), Validators.max(42)]]
+      repPass: ['', [Validators.required, Validators.min(5), Validators.max(42)]],
+      role: ['student', Validators.required]
     })
   }
 

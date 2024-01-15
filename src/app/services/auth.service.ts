@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { User } from '../models/User';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api';
+    user = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient) {}
-
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials);
-  }
-
-  signup(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/signup`, data);
-  }
+    storeUser(user: User) {
+        sessionStorage.setItem('token', JSON.stringify(user));
+        this.user.next(user);
+    }
 }
