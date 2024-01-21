@@ -5,14 +5,13 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/User';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, CommonModule],
   providers: [UserService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

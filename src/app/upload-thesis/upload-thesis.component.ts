@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { User } from '../models/User';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ThesisService } from '../services/thesis.service';
 
-@Component({  
+@Component({
   selector: 'app-upload-thesis',
   templateUrl: './upload-thesis.component.html',
   styleUrls: ['./upload-thesis.component.css'],
   standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, CommonModule],
   providers: [ThesisService],
 })
 export class UploadThesisComponent implements OnInit {
@@ -30,7 +26,7 @@ export class UploadThesisComponent implements OnInit {
 
   createThesis() {
     const { title, objective, tasks, technologies } = this.formGroup.value;
-    const body = {title, objective, tasks, technologies, submissionDate: new Date(), studentId: this.authService.user.value.id}
+    const body = { title, objective, tasks, technologies, submissionDate: new Date(), studentId: this.authService.user.value.id }
     this.thesisService.uploadThesis(body).subscribe((res: any) => console.log(res))
   }
 

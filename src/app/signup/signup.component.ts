@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, HttpClientModule, MatOptionModule, MatSelectModule],
+  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, MatOptionModule, MatSelectModule],
   providers: [UserService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
