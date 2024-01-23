@@ -1,0 +1,50 @@
+/* General Table Styles */
+.mat-elevation-z8 {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    text-align: left;
+    padding: 12px 15px;
+    background-color: #3f51b5; /* Adjust color if needed */
+    color: black; /* Adjust text color for visibility */
+    font-size: 0.9rem;
+  }
+  
+  td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.8rem;
+    color: #333; /* Ensure text is clearly visible */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #e0e0e0; /* Hover effect */
+  }
+  
+  .mat-card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    th, td {
+      padding: 8px 10px;
+      font-size: 0.7rem;
+    }
+  }
+  

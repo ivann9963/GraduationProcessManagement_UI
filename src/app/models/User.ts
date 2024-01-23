@@ -1,3 +1,5 @@
+import { TeacherPosition } from "./Teacher"
+
 export type User = {
     id: string,
     username: string,

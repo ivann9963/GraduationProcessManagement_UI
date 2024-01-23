@@ -4,7 +4,20 @@
   <span *ngIf="!isLoggedIn()" [style.cursor]="'pointer'" routerLink="/login">Login</span>
   <span *ngIf="!isLoggedIn()" [style.cursor]="'pointer'" routerLink="/signup">Signup</span>
   <span *ngIf="isLoggedIn()" [style.cursor]="'pointer'" routerLink="/home">Home</span>
-  <span *ngIf="isLoggedIn()" [style.cursor]="'pointer'" (click)="sessionStorage.clear()" routerLink="/login">Logout</span>
+  <span *ngIf="isLoggedIn()" [style.cursor]="'pointer'" routerLink="/profile">Profile</span>
+  <span *ngIf="isLoggedIn()" [style.cursor]="'pointer'" (click)="sessionStorage.clear()"
+    routerLink="/login">Logout</span>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!isLoggedIn()"></router-outlet>
+<mat-sidenav-container *ngIf="isLoggedIn()" class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <a *ngIf="isLoggedIn()" mat-list-item routerLink="/students">Students</a>
+      <a *ngIf="isLoggedIn()" mat-list-item routerLink="/teachers">Teachers</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

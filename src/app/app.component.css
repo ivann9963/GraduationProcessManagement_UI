@@ -25,3 +25,18 @@ mat-toolbar {
     padding: 5px 10px;
   }
   
+  mat-sidenav-container {
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  mat-sidenav {
+    width: 200px;
+    box-shadow: 1px 0 4px rgba(0,0,0,0.2);
+  }
+  
+  .mat-sidenav-content {
+    flex-grow: 1;
+    padding: 20px;
+  }

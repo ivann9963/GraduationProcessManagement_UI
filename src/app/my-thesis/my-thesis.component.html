@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-title>My theses</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+        <!-- Objective Column -->
+        <ng-container matColumnDef="objective">
+          <th mat-header-cell *matHeaderCellDef>Objective</th>
+          <td mat-cell *matCellDef="let element">{{element.objective}}</td>
+        </ng-container>
+        <!-- Tasks Column -->
+        <ng-container matColumnDef="tasks">
+          <th mat-header-cell *matHeaderCellDef>Tasks</th>
+          <td mat-cell *matCellDef="let element">{{element.tasks}}</td>
+        </ng-container>
+        <!-- Technologies Column -->
+        <ng-container matColumnDef="technologies">
+          <th mat-header-cell *matHeaderCellDef>Technologies</th>
+          <td mat-cell *matCellDef="let element">{{element.technologies}}</td>
+        </ng-container>
+        <!-- StudentId Column -->
+        <ng-container matColumnDef="studentId">
+          <th mat-header-cell *matHeaderCellDef>Student ID</th>
+          <td mat-cell *matCellDef="let element">{{element.student?.username}}</td>
+        </ng-container>
+        <!-- TeacherId Column -->
+        <ng-container matColumnDef="teacherId">
+          <th mat-header-cell *matHeaderCellDef>Teacher ID</th>
+          <td mat-cell *matCellDef="let element">{{element.teacher?.username}}</td>
+        </ng-container>
+        <!-- SubmissionDate Column -->
+        <ng-container matColumnDef="submissionDate">
+          <th mat-header-cell *matHeaderCellDef>Submission Date</th>
+          <td mat-cell *matCellDef="let element">{{element.submissionDate | date}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  

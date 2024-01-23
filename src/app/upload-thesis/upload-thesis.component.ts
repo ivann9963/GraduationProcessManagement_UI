@@ -5,13 +5,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { ThesisService } from '../services/thesis.service';
+import { MyThesisComponent } from '../my-thesis/my-thesis.component';
 
 @Component({
   selector: 'app-upload-thesis',
   templateUrl: './upload-thesis.component.html',
   styleUrls: ['./upload-thesis.component.css'],
   standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule, CommonModule, MyThesisComponent],
   providers: [ThesisService],
 })
 export class UploadThesisComponent implements OnInit {
@@ -27,7 +28,10 @@ export class UploadThesisComponent implements OnInit {
   createThesis() {
     const { title, objective, tasks, technologies } = this.formGroup.value;
     const body = { title, objective, tasks, technologies, submissionDate: new Date(), studentId: this.authService.user.value.id }
-    this.thesisService.uploadThesis(body).subscribe((res: any) => console.log(res))
+    this.thesisService.uploadThesis(body).subscribe((res: any) => {
+      console.log(res)
+      // this.formGroup.reset(); 
+    })
   }
 
   private initForm() {

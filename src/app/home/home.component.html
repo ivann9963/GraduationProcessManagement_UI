@@ -1,2 +1,2 @@
 <app-upload-thesis *ngIf="authService.user.value?.role === 'STUDENT'"> </app-upload-thesis>
-<app-process-thesis *ngIf="authService.user.value?.role === 'TEACHER'"> </app-process-thesis>
+<app-theses *ngIf="authService.user.value?.role === 'TEACHER'"> </app-theses>
